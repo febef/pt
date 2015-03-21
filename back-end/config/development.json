@@ -1,0 +1,18 @@
+{
+   "port"          : 8080,
+   "morgan"        : "dev",
+   "scriptPath"    : "./src",
+   "session"       : {
+      "saveUninitialized" : true,
+      "secret"            : "ewsdtyudjyUDSE$4:ÑH_:_",
+      "resave"            : true,
+      "cookie"            : { "maxAge": 7200000 },
+      "name"              : "www.pt.org"
+   }, "mongoStore" : {
+      "db": "dbname",
+      "host": "localhost",
+      "collection": "dbcollectionname",
+      "autoReconnect": true,
+      "clear_interval": 3600
+   }
+}
