@@ -1,1 +1,3 @@
-PT is a simple proyect template.
+
+# pt
+Is a simple proyect template.
