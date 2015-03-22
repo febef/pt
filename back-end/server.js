@@ -1,12 +1,12 @@
 var
-   connectLivereload = require('connect-livereload'),
-   cookieParser      = require('cookie-parser'     ),
-   bodyParser        = require('body-parser'       ),
-   express           = require('express'           ),
-   session           = require('express-session'   ),
-   MongoStore        = require('connect-mongo'     )(session),
-   morgan            = require('morgan'            ),
-   path              = require('path'              ),
+   cookieParser      = require('cookie-parser'       ),
+   bodyParser        = require('body-parser'         ),
+   express           = require('express'             ),
+   session           = require('express-session'     ),
+   MongoStore        = require('connect-mongo'       )(session),
+   morgan            = require('morgan'              ),
+   path              = require('path'                ),
+   rMain             = require('./lib/routes/main.js'),
    cfg, app;
 
 module.exports = exports = app = express();
@@ -15,11 +15,14 @@ app.set('cfg', require(path.join(__dirname, './config/' +
             app.get('env') + '.json')));
 cfg = app.get('cfg');
 
-app.set('views', path.join(__dirname, './views'));
-app.set('view eninge', 'jade');
-app.use(morgan(app.get('cfg').morgan));
+app.set('views', path.join(__dirname, '../front-end/src/views'));
+app.set('view engine', 'jade');
+app.set('port', cfg.port);
+app.use(morgan(cfg.morgan));
 app.use(bodyParser.json());
 app.use(cookieParser());
+if (app.get('env')=='development')
+   app.use(require('connect-livereload')({port: 9002}));
 app.use(express.static(path.join(__dirname, '../resources')));
 app.use(express.static(path.join(__dirname, cfg.scriptPath,'./js')));
 app.use(express.static(path.join(__dirname, cfg.scriptPath,'./css')));
@@ -27,10 +30,9 @@ app.use(express.static(path.join(__dirname, cfg.scriptPath,'./css')));
 cfg.session.store = new MongoStore(cfg.mongoStore);
 app.use(session(cfg.session));
 
-
+app.use('/', rMain);
 
 app.disable('x-powered-by');
-app.use(connectLivereload());
 
 // error handlers
 //=============================================================================
@@ -46,15 +48,13 @@ app.use(function(err, req, res, next) {
    res.status(err.status || 500);
    res.render('404', {
       msg: err.message,
-      error: {}
+      error: err
    });
 
 });
 
 //Firing Up express
 //=============================================================================
-
-app.set('port', cfg.port);
 app.listen(app.get('port'), function(){
    console.log(("Express server listening on port " + app.get('port')));
 });

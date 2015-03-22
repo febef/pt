@@ -1,5 +1,7 @@
-var route = require('express').Route;
+var router = require('express').Router();
 
-route.get('/', function(res, req){
-   res.send('hola mundo! :p');
+router.get('/', function(req, res){
+   res.render('panels/home');
 });
+
+module.exports = router;

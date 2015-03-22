@@ -4,42 +4,50 @@ var
    gulp               = require('gulp'),
    stylus             = require('gulp-stylus'),
    nib                = require('nib'),
-   server             = require('gulp-express');
+   gls                = require('gulp-live-server'),
+   connect            = require('connect'),
+   server, tinylr;
 
 
 gulp.task('watches', function () {
-   gulp.watch(['frot-end/src/js/*'], server.notify);
-   gulp.watch(['front-end/src/css/*'], ['css']);
-   gulp.watch(['frot-end/views/*.jade']);
-   gulp.watch(['resouces/**/*'], server.notify);
+   server = gls.new(['back-end/server.js']);
+   gulp.watch(['front-end/src/js/*.js'], notifyLiveReload);
+   gulp.watch(['front-end/src/css/*.stly'], ['css']);
+   gulp.watch(['front-end/src/css/*.css'], notifyLiveReload);
+   gulp.watch(['front-end/src/views/**/*.jade'], notifyLiveReload);
+   gulp.watch(['resources/**/*'], notifyLiveReload);
    gulp.watch(['back-end/server.js', 'back-end/lib/**/*.js'], ['serverrestart']);
 });
 
 gulp.task('server', function(){
-  server.run(['./back-end/server.js']);
+   server.stop();
+   server.start();
 });
 
+gulp.task('livereload', function() {
+   tinylr = require('tiny-lr')();
+   tinylr.listen(9002);
+});
+
+function notifyLiveReload(event) {
+   var fileName = require('path').relative(__dirname, event.path);
+   tinylr.changed({
+      body: {
+         files: [fileName]
+      }
+   });
+   console.log("[LiveReload] by>", fileName);
+}
+
 gulp.task('serverrestart', function(){
-   server.stop();
-   server.run();
-   server.notify();
+//   server.stop();
+   server.start();
 });
 //Preprocesa archivos Stylus a CSS y recarga los cambios
 gulp.task('css', function() {
    gulp.src('./front-end/src/css/*.styl')
       .pipe(stylus({ use: nib() }))
-      .pipe(gulp.dest('./front-end/src/src/css'))
-      .pipe(server.notify());
+      .pipe(gulp.dest('./front-end/css'));
 });
 
-// Recarga el navegador cuando hay cambios en el HTML
-gulp.task('jade', function(event) {
-   gulp.src('./front-end/src/views/**/*.jade')
-      .pipe(server.notify());
-});
-
-
-
-gulp.task('default', ['watches','server']);
-
-
+gulp.task('default', ['livereload','watches','server']);
