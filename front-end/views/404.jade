@@ -1,10 +1,10 @@
 
 doctype
 head
-body(style="backgroundColor:black")
+body
   center
     br
-    span.label.label-danger(style="font-size:22px;")= message
-    span.label.label-warning(style="font-size:22px;")= error.status
+    span= msg
+    span= error.status
   br
   pre(style="background-color:#202020;color:#bbbbbb") #{error.stack}

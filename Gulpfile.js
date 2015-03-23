@@ -25,7 +25,7 @@ gulp.task('watches', function () {
    gulp.watch(['front-end/src/css/*.css'],[ 'inject']);
    gulp.watch(['front-end/views/**/*.jade'], notifyLiveReload);
    gulp.watch(['resources/**/*'], notifyLiveReload);
-   gulp.watch(['back-end/server.js', 'back-end/lib/**/*.js'], ['RunServer']);
+   gulp.watch(['back-end/server.js', 'back-end/lib/**/*.js'], ['RunServerDev']);
 });
 
 // Incluye los archivos css/js.

@@ -2,7 +2,7 @@ var router = require('express').Router();
 
 router.get('/', function(req, res){
    var data = {
-      title: "pt example"
+      title: "PT example :)"
    };
    res.render('panels/home', data);
 });
