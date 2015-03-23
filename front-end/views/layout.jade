@@ -1,0 +1,18 @@
+doctype html
+html(lang="es")
+  head
+    title= title
+    //inject:css
+    link(rel='stylesheet', href='/libs/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/main.css')
+    //end inject
+  body
+    include ./modules/header.jade
+    block content
+    include ./modules/footer.jade
+    //inject:js
+    script(src='/libs/jquery/dist/jquery.js')
+    script(src='/libs/bootstrap/dist/js/bootstrap.js')
+    script(src='/libs/angularjs/angular.js')
+    script(src='/js/main.js')
+    //end inject

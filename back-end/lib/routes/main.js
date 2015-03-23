@@ -1,7 +1,10 @@
 var router = require('express').Router();
 
 router.get('/', function(req, res){
-   res.render('panels/home');
+   var data = {
+      title: "pt example"
+   };
+   res.render('panels/home', data);
 });
 
 module.exports = router;

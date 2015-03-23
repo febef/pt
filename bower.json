@@ -1,6 +1,9 @@
 {
-   "name": "tp",
-   "version": "0.0.1",
-   "description": "A simple proyect template.",
-   "dependencies": {}
+  "name": "tp",
+  "version": "0.0.1",
+  "description": "A simple proyect template.",
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "angularjs": "~1.3.15"
+  }
 }

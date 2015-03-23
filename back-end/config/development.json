@@ -1,7 +1,7 @@
 {
    "port"          : 8080,
    "morgan"        : "dev",
-   "scriptPath"    : "./src",
+   "scriptPath"    : "../front-end/src",
    "session"       : {
       "saveUninitialized" : true,
       "secret"            : "ewsdtyudjyUDSE$4:ÑH_:_",

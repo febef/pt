@@ -15,7 +15,7 @@ app.set('cfg', require(path.join(__dirname, './config/' +
             app.get('env') + '.json')));
 cfg = app.get('cfg');
 
-app.set('views', path.join(__dirname, '../front-end/src/views'));
+app.set('views', path.join(__dirname, '../front-end/views'));
 app.set('view engine', 'jade');
 app.set('port', cfg.port);
 app.use(morgan(cfg.morgan));
@@ -24,8 +24,7 @@ app.use(cookieParser());
 if (app.get('env')=='development')
    app.use(require('connect-livereload')({port: 9002}));
 app.use(express.static(path.join(__dirname, '../resources')));
-app.use(express.static(path.join(__dirname, cfg.scriptPath,'./js')));
-app.use(express.static(path.join(__dirname, cfg.scriptPath,'./css')));
+app.use(express.static(path.join(__dirname, cfg.scriptPath)));
 
 cfg.session.store = new MongoStore(cfg.mongoStore);
 app.use(session(cfg.session));
