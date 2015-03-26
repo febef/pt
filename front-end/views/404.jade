@@ -4,7 +4,8 @@ head
 body
   center
     br
-    span= msg
-    span= error.status
+    h1
+      span= msg
+      span= error.status
   br
   pre(style="background-color:#202020;color:#bbbbbb") #{error.stack}

@@ -1,4 +1,7 @@
-var router = require('express').Router();
+
+var
+   app    = module.parent.exports,
+   router = require('express').Router();
 
 router.get('/', function(req, res){
    var data = {
@@ -7,4 +10,4 @@ router.get('/', function(req, res){
    res.render('panels/home', data);
 });
 
-module.exports = router;
+app.use('/', router);

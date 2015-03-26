@@ -1,3 +1,5 @@
+
+
 var
    cookieParser      = require('cookie-parser'       ),
    bodyParser        = require('body-parser'         ),
@@ -6,7 +8,6 @@ var
    MongoStore        = require('connect-mongo'       )(session),
    morgan            = require('morgan'              ),
    path              = require('path'                ),
-   rMain             = require('./lib/routes/main.js'),
    cfg, app;
 
 module.exports = exports = app = express();
@@ -17,19 +18,27 @@ cfg = app.get('cfg');
 
 app.set('views', path.join(__dirname, '../front-end/views'));
 app.set('view engine', 'jade');
-app.set('port', cfg.port);
+app.set('port', cfg.port);app.use(morgan(cfg.morgan));
 app.use(morgan(cfg.morgan));
 app.use(bodyParser.json());
 app.use(cookieParser());
+
 if (app.get('env')=='development')
    app.use(require('connect-livereload')({port: 9002}));
+
 app.use(express.static(path.join(__dirname, '../resources')));
 app.use(express.static(path.join(__dirname, cfg.scriptPath)));
 
 cfg.session.store = new MongoStore(cfg.mongoStore);
 app.use(session(cfg.session));
 
-app.use('/', rMain);
+require('./lib/mongodb');
+
+require('./lib/i18n');
+
+require('./lib/pasport');
+
+require('./lib/routes');
 
 app.disable('x-powered-by');
 

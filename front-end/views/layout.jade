@@ -6,7 +6,7 @@ html(lang="es")
     link(rel='stylesheet', href='/libs/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet', href='/css/main.css')
     //end inject
-  body
+  body(ng-app)
     include ./modules/header.jade
     block content
     include ./modules/footer.jade

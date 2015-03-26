@@ -3,5 +3,7 @@ extends ../layout.jade
 block content
   .container
     center.panel
-      h1
-        i Hola mundo! =)
+      h3
+        i Hola MundoAngular!"}}
+      input(type="text" placeholder="Cual es su nombre?" ng-model="nombre")
+      h2 Hola {{nombre}}!
