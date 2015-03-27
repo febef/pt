@@ -25,7 +25,10 @@ gulp.task('watches', function () {
    gulp.watch(['front-end/src/css/*.css'],[ 'inject']);
    gulp.watch(['front-end/views/**/*.jade'], notifyLiveReload);
    gulp.watch(['resources/**/*'], notifyLiveReload);
-   gulp.watch(['back-end/server.js', 'back-end/lib/**/*.js'], ['RunServerDev']);
+   gulp.watch([
+      'back-end/**/*.js',
+      'back-end/config/**/*.json'
+   ], ['RunServerDev']);
 });
 
 // Incluye los archivos css/js.
@@ -87,7 +90,7 @@ gulp.task('compress', function(){
 
 });
 
-// Limpia 'dist'
+// Limpia 'dist'.
 gulp.task('clear', function(){
 
 });

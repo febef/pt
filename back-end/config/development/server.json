@@ -1,0 +1,6 @@
+{
+   "viewEngine"    : "jade",
+   "port"          : 8080,
+   "morgan"        : "dev",
+   "scriptsPath"   : "../front-end/src"
+}

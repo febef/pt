@@ -10,34 +10,40 @@ var
    path              = require('path'                ),
    cfg, app;
 
-module.exports = exports = app = express();
+module.exports = app = express();
 
-app.set('cfg', require(path.join(__dirname, './config/' +
-            app.get('env') + '.json')));
+require('./config');
 cfg = app.get('cfg');
 
 app.set('views', path.join(__dirname, '../front-end/views'));
-app.set('view engine', 'jade');
-app.set('port', cfg.port);app.use(morgan(cfg.morgan));
+app.set('view engine', cfg.viewEngine);
+app.set('port', cfg.port);
 app.use(morgan(cfg.morgan));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '../resources')));
+app.use(express.static(path.join(__dirname, cfg.scriptsPath)));
 
+// livereload
 if (app.get('env')=='development')
    app.use(require('connect-livereload')({port: 9002}));
 
-app.use(express.static(path.join(__dirname, '../resources')));
-app.use(express.static(path.join(__dirname, cfg.scriptPath)));
-
+// sesiones 'permanentes' en mongoDB
 cfg.session.store = new MongoStore(cfg.mongoStore);
+
+// sesiones
 app.use(session(cfg.session));
 
+// base de satos
 require('./lib/mongodb');
 
+// internacionalizacion
 require('./lib/i18n');
 
+// manejo de usuarios
 require('./lib/pasport');
 
+// rutas.
 require('./lib/routes');
 
 app.disable('x-powered-by');

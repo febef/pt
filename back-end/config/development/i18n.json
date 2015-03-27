@@ -1,0 +1,6 @@
+{
+   "locales"       : ["es", "en"],
+   "cookie"        : "wendy'slangcookiei18n",
+   "defaultLocale" : "es",
+   "directory"     : "./lang"
+}

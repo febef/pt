@@ -1,0 +1,8 @@
+
+{
+   "saveUninitialized" : true,
+   "secret"            : "ewsdtyudjyUDSE$4:ÑH_:_",
+   "resave"            : true,
+   "cookie"            : { "maxAge": 7200000 },
+   "name"              : "www.wendy.org"
+}

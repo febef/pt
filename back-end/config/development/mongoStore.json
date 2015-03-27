@@ -1,0 +1,7 @@
+{
+   "db": "wendyDB",
+   "host": "localhost",
+   "collection": "wendysessions",
+   "autoReconnect": true,
+   "clear_interval": 3600
+}
