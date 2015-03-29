@@ -60,9 +60,10 @@ app.use( function(req, res, next) {
 // production error handler
 app.use(function(err, req, res, next) {
    res.status(err.status || 500);
-   res.render('404', {
+   res.render('errors/404', {
       msg: err.message,
-      error: (app.get('env')=='development')? err : {}
+      estatus: (app.get('env')=='development')? err.status : {},
+      estack: (app.get('env')=='development')? err.stack : {}
    });
 
 });

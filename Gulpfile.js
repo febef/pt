@@ -8,9 +8,15 @@ var
    gls                = require('gulp-live-server'),
    connect            = require('connect'),
    mocha              = require('gulp-mocha'),
+   minifyCss          = require('gulp-minify-css'),
+   uglify             = require('gulp-uglify'),
+   jade               = require('gulp-jade'),
+   uncss              = require('gulp-uncss'),
    gulpMultinject     = require('gulp-multinject'),
+   concat             = require('gulp-concat'),
    wiredep            = require('wiredep'),
    sglob              = require("glob").sync,
+   clean              = require('gulp-clean'),
    server, tinylr;
 
 // Tareas gulp =================================================================
@@ -88,11 +94,36 @@ gulp.task('mocha', function(){
 // Comprime, minifica y unifica todo.
 gulp.task('compress', function(){
 
+   var
+      w     = wiredep({directory: "./front-end/src/libs"}),
+      csss  = [].concat(w.css.concat(sglob('./front-end/src/css/**/*.css'))),
+      jss   = [].concat(w.js.concat(sglob('./front-end/src/js/**/*.js')));
+
+   gulp.src("./front-end/views/**/*.jade")
+      .pipe(jade({data : {
+         __: function(){return '';}
+      }}))
+      .pipe(gulp.dest("./front-end/.html"));
+
+   var htmls = sglob('./front-end/.html/**/*.html');
+
+   gulp.src(csss)
+      .pipe(minifyCss())
+      .pipe(concat('main.min.css'))
+      .pipe(uncss({ html: htmls}))
+      .pipe(gulp.dest('./front-end/dist/css/'));
+
+   gulp.src(jss)
+      .pipe(uglify({mangle: false }))
+      .pipe(concat('main.min.js'))
+      .pipe(gulp.dest('./front-end/dist/js/'));
+
 });
 
 // Limpia 'dist'.
-gulp.task('clear', function(){
-
+gulp.task('clean', function(){
+   gulp.src('./front-end/dist/*', {read:false})
+      .pipe(clean());
 });
 
 // Lanza un explorador web, con la pagina.

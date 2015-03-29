@@ -48,4 +48,4 @@ var init = function(conf) {
    return db;
 };
 
-app.db = init(app.get('cfg').db);
+app.set('db', init(app.get('cfg').db));

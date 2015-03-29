@@ -1,9 +1,10 @@
-extends ../layout.jade
+extends ../layouts/layout.jade
 
 block content
   .container
     center.panel
       h3
-        i Hola MundoAngularJS!
-      input(type="text" placeholder="Cual es su nombre?" ng-model="nombre")
-      h2 Hola {{nombre}}!
+        i= __('Hola MundoAngularJS!')
+      .input-group
+        input.form-control(type="text" placeholder=__('Cual es su nombre?') ng-model="nombre")
+      h2= __('Hola') + " {{nombre}}!"

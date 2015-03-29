@@ -5,7 +5,7 @@ var
 
 router.get('/', function(req, res){
    var data = {
-      title: "PT example :)"
+      title: "wendy planilla de ejemplo :)"
    };
    res.render('panels/home', data);
 });
