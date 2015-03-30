@@ -1,7 +1,7 @@
 
  wendy
-=======
-Is a simple proyect MEAN template.
+-------
+Is a simple MEAN template...
 
 ## wendy include
 
@@ -28,4 +28,4 @@ Is a simple proyect MEAN template.
 
     gulp
 
-This start the server in development mode, now you can open web browser in http://localhost:8080 and see it in running. And test edit a view.
+This start the server in development mode, now you can open web browser in http://localhost:8080 and test edit a view.
