@@ -1,9 +1,9 @@
 
- wendy
--------
-Is a simple MEAN template...
+#wendy
+[logo]: resources/img/wendy.jpg
+![logo]Is a simple MEAN template...
 
-## wendy include
+## wendy includes
 
   **back-end**
   
@@ -29,3 +29,5 @@ Is a simple MEAN template...
     gulp
 
 This start the server in development mode, now you can open web browser in http://localhost:8080 and test edit a view.
+
+------
