@@ -1,19 +1,23 @@
 
-# wendy
+ wendy
 =======
 Is a simple proyect MEAN template.
 
 ## wendy include
 
-  **back-end**: Express, Jade, Stylus, MongoDB, MongoStore, Passport, i18n.
+  **back-end**
   
-  **front-end**: AngularJS, angular-ui-routes, ngFx("ngAnimation"), angular-ui-bootstrap.
+    Express, Jade, Stylus, MongoDB, MongoStore, Passport, i18n.
 
-  **livereload**: monitors changes in the file system. As soon as you save a file, it is preprocessed as needed, and the browser is refreshed.
+  **front-end**
+  
+    AngularJS, angular-ui-routes, ngFx, angular-ui-bootstrap.
+
+> ***livereload*** (monitors changes in the file system. As soon as you save a file, it is preprocessed as needed, and the browser is refreshed)
 
 ## requires
   
-  > NodeJS, NPM, Bower, and Gulp 
+  > NodeJS, NPM, Bower, Gulp 
 
 ##install
 
