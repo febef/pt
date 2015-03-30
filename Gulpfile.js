@@ -25,10 +25,10 @@ var
 gulp.task('watches', function () {
    server = gls.new(['back-end/server.js']);
    gulp.watch(['front-end/src/js/*.js'], notifyLiveReload);
-   gulp.watch(['front-end/src/js/*.js'], [ 'inject']);
    gulp.watch(['front-end/src/css/*.styl'], ['css']);
    gulp.watch(['front-end/src/css/*.css'], notifyLiveReload);
-   gulp.watch(['front-end/src/css/*.css'],[ 'inject']);
+   gulp.watch(['bower.json'],[ 'inject']);
+   gulp.watch(['front-end/src/**/*'],[ 'inject']);
    gulp.watch(['front-end/views/**/*.jade'], notifyLiveReload);
    gulp.watch(['resources/**/*'], notifyLiveReload);
    gulp.watch([
@@ -42,10 +42,10 @@ gulp.task('inject', function() {
 
    var
       w = wiredep({directory: "./front-end/src/libs"}),
-      csss = [].concat(w.css.concat(sglob('./front-end/src/css/**/*.css'))),
-      jss  = [].concat(w.js.concat(sglob('./front-end/src/js/**/*.js')));
+      csss = [].concat((w.css?w.css:[]).concat(sglob('./front-end/src/css/**/*.css'))),
+      jss  = [].concat((w.js?w.js:[]).concat(sglob('./front-end/src/js/**/*.js')));
 
-   gulp.src(['./front-end/views/layout.jade'])
+   gulp.src(['./front-end/views/**/*.jade'])
       .pipe(gulpMultinject(jss,'js', { base:"./front-end/src"}))
       .pipe(gulpMultinject(csss, 'css',{ base:"./front-end/src"}))
       .pipe(gulp.dest('./front-end/views'));
