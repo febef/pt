@@ -81,7 +81,7 @@ gulp.task('RunServerDev', function(){
 // Compila de Stylus a CSS.
 gulp.task('css', function() {
    gulp.src('./front-end/src/css/*.styl')
-      .pipe(stylus({ use: nib() }))
+      .pipe(stylus({ use: [ nib()] }))
       .pipe(gulp.dest('./front-end/src/css'));
 });
 

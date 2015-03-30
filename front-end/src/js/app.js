@@ -3,7 +3,8 @@
 
    angular.module("main", [
          "ui.router",
-         "ui.bootstrap"
+         "ui.bootstrap",
+         "ngFx"
    ]);
 
 })();

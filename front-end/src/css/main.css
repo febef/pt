@@ -1,6 +1,7 @@
 body {
   color: #eea500;
   background-color: #202020;
+  overflow: hidden;
 }
 .panel,
 .navbar {

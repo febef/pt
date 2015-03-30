@@ -1,5 +1,5 @@
-.container
-  center.panel
+.container(ng-controller="ctrl.home as home")
+  center(Class="panel {{home.ani}}", ng-show="home.ani!=''")
     h3
       i= __('Hola MundoAngularJS!')
     .input-group
