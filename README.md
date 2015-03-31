@@ -6,18 +6,18 @@
 ## wendy includes
 
   **back-end**
-  
+
     Express, Jade, Stylus, MongoDB, MongoStore, Passport, i18n.
 
   **front-end**
-  
-    AngularJS, angular-ui-routes, ngFx, angular-ui-bootstrap.
+
+    AngularJS, angular-ui-routes, ngFx, loading-bar, angular-ui-bootstrap.
 
 > ***livereload*** (monitors changes in the file system. As soon as you save a file, it is preprocessed as needed, and the browser is refreshed)
 
 ## requires
-  
-  > NodeJS, NPM, Bower, Gulp 
+
+  > NodeJS, NPM, Bower, Gulp
 
 ##install
 
