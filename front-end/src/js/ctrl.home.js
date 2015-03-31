@@ -7,7 +7,7 @@
          vm.ani='';
 
          $timeout(function(){
-            vm.ani='fx-fade-up fx-speed-600';
+            vm.ani='fx-fade-up fx-speed-500';
          }, 0);
       });
 
