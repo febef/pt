@@ -6,6 +6,7 @@
          "ui.router",
          "ui.bootstrap",
          "ngFx",
+         "ngResource",
          "chieffancypants.loadingBar"
       ])
       .config(function(cfpLoadingBarProvider) {

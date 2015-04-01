@@ -1,10 +1,7 @@
 .container
-  center(class="panel {{login.animation}}", ng-show="login.animation!=''")
-    h3= __('Ingresar')
-    form
-      input.from-control(type="text", placeholder=__('nombre de usuario'), ng-model="login.username")
-      br
-      input.from-control(type="password", placeholder=__('contraseña'), ng-model="login.password")
-      br
-      input.buton(type="submit")
+  center#login(class="panel {{login.animation}}", ng-show="login.animation!=''")
+    form(name="lform")
+      input.form-control(type="text", placeholder=__('nombre de usuario'), ng-model="login.username")
+      input.form-control(type="password", placeholder=__('contraseña'), ng-model="login.password")
+      input.btn.btn-success.btn-xs(type="submit", value= __('Ingresar'), ng-click="login.do()")
 
