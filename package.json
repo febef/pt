@@ -31,6 +31,7 @@
     "connect-livereload": "^0.5.3",
     "glob": "^5.0.3",
     "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.5.2",
     "gulp-if": "^1.2.5",
     "gulp-jade": "^1.0.0",

@@ -2,7 +2,7 @@
 (function(){
 
    angular.module('main')
-      .controller('ctrl.home', function($timeout){
+      .controller('ctrl.login', function($timeout){
         var vm = this;
          vm.animation='';
 

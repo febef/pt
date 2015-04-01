@@ -1,0 +1,10 @@
+.container
+  center(class="panel {{login.animation}}", ng-show="login.animation!=''")
+    h3= __('Ingresar')
+    form
+      input.from-control(type="text", placeholder=__('nombre de usuario'), ng-model="login.username")
+      br
+      input.from-control(type="password", placeholder=__('contraseña'), ng-model="login.password")
+      br
+      input.buton(type="submit")
+

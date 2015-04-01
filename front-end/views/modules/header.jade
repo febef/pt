@@ -3,7 +3,12 @@
     table(width="95%")
       tr
         td(width="33%")
+          h4= __('Planilla MEAN...')
         td(width="33%", align="center")
-          h4= __('Algún Titulo.')
+          a(ui-sref="animations", ng-show="!main.state.is('animations')")= __('Animaciones')
+          span 
+          a(ui-sref="login", ng-show="!main.state.is('login')")= __('Entrar')
+          span 
+          a(ui-sref="home", ng-show="!main.state.is('home')")= __('Inicio')
         td(width="33%", align="right")
           img(src="img/wendy.jpg" height="32px")

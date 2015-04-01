@@ -1,7 +1,8 @@
-.container(ng-controller="ctrl.home as home")
-  center(Class="panel {{home.ani}}", ng-show="home.ani!=''")
+.container
+  center(class="panel fx-fade-up", ng-show="home.animation!=''")
     h3
-      i= __('Hola MundoAngularJS!')
+      i= __('<<< AngularJS! >>>')
     .input-group
-      input.form-control(type="text" placeholder=__('Cual es su nombre?') ng-model="nombre")
-    h2= __('Hola') + " {{nombre}}!"
+      input.form-control(type="text" placeholder=__('Escribe algo') ng-model="texto")
+    h2
+      | <small>&gt;</small> {{texto}} <small>&lt;</small>

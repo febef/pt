@@ -5,9 +5,9 @@ var
 
 router.get('/', function(req, res){
    var data = {
-      title: "wendy planilla de ejemplo :)"
+      title: "wendy, plantilla MEAN :)"
    };
-   res.render('pages/home', data);
+   res.render('pages/index', data);
 });
 
 
