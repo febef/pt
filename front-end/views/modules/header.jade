@@ -5,10 +5,11 @@
         td(width="33%")
           h4= __('Planilla MEAN...')
         td(width="33%", align="center")
-          a(ui-sref="animations", ng-show="!main.state.is('animations')")= __('Animaciones')
-          span 
-          a(ui-sref="login", ng-show="!main.state.is('login')")= __('Entrar')
-          span 
-          a(ui-sref="home", ng-show="!main.state.is('home')")= __('Inicio')
+          .btn-group(role="group")
+            button.btn.btn-primary.btn-xs(type="button", ng-click="main.backpage()") «
+            button.btn.btn-primary.btn-xs(type="button", ui-sref="animations", ng-show="!main.state.is('animations')")= __('Animaciones')
+            button.btn.btn-primary.btn-xs(type="button", ui-sref="login", ng-show="!main.state.is('login')")= __('Entrar')
+            button.btn.btn-primary.btn-xs(type="button", ui-sref="home", ng-show="!main.state.is('home')")= __('Inicio')
+            button.btn.btn-primary.btn-xs(type="button", ng-click="main.nextpage()") »
         td(width="33%", align="right")
           img(src="img/wendy.jpg" height="32px")
