@@ -3,13 +3,12 @@
     table(width="95%")
       tr
         td(width="33%")
-          h4= __('Planilla MEAN...')
+          h4= __('Plantilla MEAN')
         td(width="33%", align="center")
           .btn-group(role="group")
             button.btn.btn-primary.btn-xs(type="button", ng-click="main.backpage()") «
-            button.btn.btn-primary.btn-xs(type="button", ui-sref="animations", ng-show="!main.state.is('animations')")= __('Animaciones')
-            button.btn.btn-primary.btn-xs(type="button", ui-sref="login", ng-show="!main.state.is('login')")= __('Entrar')
-            button.btn.btn-primary.btn-xs(type="button", ui-sref="home", ng-show="!main.state.is('home')")= __('Inicio')
+            button.btn.btn-primary.btn-xs(type="button", ng-repeat="state in main.states" ui-sref="{{state.name}}",
+              ng-show="!main.state.is('{{state.name}}')") {{state.label}}
             button.btn.btn-primary.btn-xs(type="button", ng-click="main.nextpage()") »
         td(width="33%", align="right")
           img(src="img/wendy.jpg" height="32px")

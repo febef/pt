@@ -9,6 +9,12 @@ router.get('/', function(req, res){
    };
    res.render('pages/index', data);
 });
+router.get('/:tag', function(req, res){
+   var data = {
+      title: "wendy, plantilla MEAN :)"
+   };
+   res.render('pages/index', data);
+});
 
 
 router.get('/panels/:panel', function(req, res){

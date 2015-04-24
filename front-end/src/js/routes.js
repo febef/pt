@@ -2,42 +2,25 @@
 (function(){
 
    angular.module('main')
-      .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+      .config(function($stateProvider, config, $urlRouterProvider, $locationProvider) {
+         
+         var state = {};
 
          $urlRouterProvider.otherwise("home");
-         $stateProvider
-            .state("home", {
-               url: "/home",
-               views : {
-                  "main" : {
-                     templateUrl: "/panels/main",
-                     controller: 'ctrl.home',
-                     controllerAs:'home'
-                  }
-               }
-            })
-            .state("animations", {
-               url: "/animations",
-               views : {
-                  "main" : {
-                     templateUrl: "/panels/animations",
-                     controller:'ctrl.animations',
-                     controllerAs:'ani'
-                  }
-               }
-            })
-            .state("login", {
-               url: "/login",
-               views : {
-                  "main" : {
-                     templateUrl: "/panels/login",
-                     controller: 'ctrl.login',
-                     controllerAs:'login'
-                  }
-               }
-            });
+         $locationProvider.html5Mode({
+            enabled     : true,
+            requireBase : false
+         });
 
+         for (state in config.states) {
+            $stateProvider
+               .state(config.states[state].name, {
+                  url : '/' + config.states[state].url,
+                  views : config.states[state].views
+               });
+         }
+      
 
       });
 
-})();
+}());
