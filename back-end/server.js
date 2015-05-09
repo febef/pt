@@ -1,5 +1,4 @@
 
-
 var
    cookieParser      = require('cookie-parser'       ),
    bodyParser        = require('body-parser'         ),
@@ -25,8 +24,9 @@ app.use(express.static(path.join(__dirname, '../resources')));
 app.use(express.static(path.join(__dirname, cfg.scriptsPath)));
 
 // livereload
-if (app.get('env')=='development')
+if (app.get('env')==='development') {
    app.use(require('connect-livereload')({port: 9002}));
+}
 
 // sesiones 'permanentes' en mongoDB
 cfg.session.store = new MongoStore(cfg.mongoStore);
@@ -62,8 +62,8 @@ app.use(function(err, req, res, next) {
    res.status(err.status || 500);
    res.render('errors/404', {
       msg: err.message,
-      estatus: (app.get('env')=='development')? err.status : {},
-      estack: (app.get('env')=='development')? err.stack : {}
+      estatus: (app.get('env')==='development')? err.status : {},
+      estack: (app.get('env')==='development')? err.stack : {}
    });
 
 });

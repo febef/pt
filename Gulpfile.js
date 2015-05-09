@@ -106,7 +106,7 @@ gulp.task('compress', function(){
       .pipe(gulp.dest("./front-end/.html"));
 
    var htmls = sglob('./front-end/.html/**/*.html');
-
+console.log("HTMLS!:> ",htmls);
    gulp.src(csss)
       .pipe(minifyCss())
       .pipe(concat('main.min.css'))
@@ -136,7 +136,7 @@ gulp.task('test', ['clear', 'prod', 'mocha']);
 // Comando para iniciar en modo produccion.
 gulp.task('start', ['prod', 'RunServer']);
 // Comando que prepara el el modo produccion.
-gulp.task('prod', ['clear', 'inject', 'compress']);
+gulp.task('prod', [/*'clear',*/ 'inject', 'compress']);
 // Comando para lanzar el entorno de desarrollo.
 gulp.task('dev', ['inject', 'livereload','watches', 'RunServerDev']);
 // Simil anterior, pero tambien abre la web en un exporador.
